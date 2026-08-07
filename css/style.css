@@ -566,7 +566,7 @@ section.block { padding-block: 4rem; }
 }
 
 .differentiator-figure {
-  max-width: 640px;
+  max-width: 440px;
   margin: 2rem auto 0;
 }
 .container > .differentiator-figure:first-child {
@@ -663,6 +663,31 @@ section.block { padding-block: 4rem; }
 @media (max-width: 860px) {
   .audience-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+.discover-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 640px) {
+  .discover-grid { grid-template-columns: 1fr; }
+}
+
+.topic-detail {
+  scroll-margin-top: 6rem;
+  max-width: 46rem;
+}
+.topic-detail + .topic-detail {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+.topic-detail h3 { margin-bottom: 0.3em; }
+.topic-detail h4 { margin-top: 1.75rem; margin-bottom: 0.75rem; }
+.topic-meta {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--orange);
+  margin-bottom: 0.6rem;
+}
 @media (max-width: 560px) {
   .audience-grid { grid-template-columns: 1fr; }
 }
@@ -723,6 +748,11 @@ form.contact-form {
   font-weight: 500;
 }
 .form-note[hidden] { display: none; }
+.form-note.form-error {
+  background: rgba(208, 96, 0, 0.1);
+  border-color: rgba(208, 96, 0, 0.3);
+  color: var(--orange-dark);
+}
 
 /* ==========================================================================
    CTA band

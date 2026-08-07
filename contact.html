@@ -54,7 +54,7 @@
 
       <div>
         <h2>Send a message</h2>
-        <form class="contact-form" novalidate>
+        <form class="contact-form" action="https://formspree.io/f/maewnrov" method="POST" novalidate>
           <div class="field">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" autocomplete="name" required>
@@ -67,10 +67,13 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" required placeholder="Tell us about your event: date, audience, and what you're hoping to achieve."></textarea>
           </div>
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_subject" value="New enquiry from tanyahallett.com">
           <div>
             <button type="submit" class="btn btn-primary">Send Message</button>
           </div>
-          <p class="form-note" role="status" hidden>Thanks! This is a placeholder form with no backend connected yet. In a live version, your message would be sent directly to Tanya's team.</p>
+          <p class="form-note" role="status" hidden>Thanks! Your message has been sent — Tanya's team will get back to you within a few business days.</p>
+          <p class="form-note form-error" role="status" hidden>Sorry, something went wrong sending your message. Please try again or email <a href="mailto:tanya@tipt.com.au">tanya@tipt.com.au</a> directly.</p>
         </form>
       </div>
 

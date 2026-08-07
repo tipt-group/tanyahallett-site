@@ -45,15 +45,43 @@
 
   var form = document.querySelector('.contact-form');
   if (form) {
-    var note = document.querySelector('.form-note');
+    var note = document.querySelector('.form-note:not(.form-error)');
+    var errorNote = document.querySelector('.form-note.form-error');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    function showNote(el) {
+      if (note) note.hidden = true;
+      if (errorNote) errorNote.hidden = true;
+      if (el) {
+        el.hidden = false;
+        el.setAttribute('tabindex', '-1');
+        el.focus();
+      }
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (note) {
-        note.hidden = false;
-        note.setAttribute('tabindex', '-1');
-        note.focus();
-      }
-      form.reset();
+      if (submitBtn) submitBtn.disabled = true;
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            showNote(note);
+            form.reset();
+          } else {
+            showNote(errorNote);
+          }
+        })
+        .catch(function () {
+          showNote(errorNote);
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 })();
