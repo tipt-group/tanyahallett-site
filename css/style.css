@@ -566,8 +566,10 @@ section.block { padding-block: 4rem; }
 }
 
 .differentiator-figure {
-  max-width: 440px;
   margin: 2rem auto 0;
+}
+.differentiator-figure.figure-compact {
+  max-width: 440px;
 }
 .container > .differentiator-figure:first-child {
   margin-top: 0;
