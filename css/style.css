@@ -566,7 +566,8 @@ section.block { padding-block: 4rem; }
 }
 
 .differentiator-figure {
-  margin: 2rem 0 0;
+  max-width: 640px;
+  margin: 2rem auto 0;
 }
 .container > .differentiator-figure:first-child {
   margin-top: 0;
