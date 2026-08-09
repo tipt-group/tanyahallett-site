@@ -614,6 +614,28 @@ section.block { padding-block: 4rem; }
   border: 0;
 }
 
+.video-facade {
+  display: block;
+  padding-inline: 0;
+  padding-bottom: 0;
+  margin: 0;
+  font: inherit;
+  text-align: inherit;
+  color: inherit;
+  appearance: none;
+  cursor: pointer;
+}
+.video-facade img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-facade .video-play svg { transition: transform var(--speed) ease; }
+.video-facade:hover .video-play svg,
+.video-facade:focus-visible .video-play svg { transform: scale(1.08); }
+
 .video-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

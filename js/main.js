@@ -112,4 +112,22 @@
         });
     });
   }
+
+  var videoFacade = document.getElementById('speaker-reel-facade');
+  if (videoFacade) {
+    videoFacade.addEventListener('click', function () {
+      var videoId = videoFacade.getAttribute('data-video-id');
+      var videoTitle = videoFacade.getAttribute('data-video-title');
+      var wrapper = document.createElement('div');
+      wrapper.className = 'video-embed';
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + videoId + '?start=1&autoplay=1';
+      iframe.title = videoTitle;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+      wrapper.appendChild(iframe);
+      videoFacade.replaceWith(wrapper);
+    });
+  }
 })();
