@@ -49,6 +49,34 @@
     var errorNote = document.querySelector('.form-note.form-error');
     var submitBtn = form.querySelector('button[type="submit"]');
 
+    var TOPIC_LABELS = {
+      'leading-psychological-safety-in-times-of-change': 'Leading Psychological Safety in Times of Change',
+      'building-psychological-safety-brick-by-brick': 'Building Psychological Safety Brick by Brick',
+      'discover-your-superpower': 'Discover Your Superpower',
+      'leading-in-modern-times': 'Leading in Modern Times',
+      'what-happens-after-r-u-ok': 'What Happens After "R U OK?"'
+    };
+
+    var topicField = document.getElementById('topic-field');
+    var topicSlug = new URLSearchParams(window.location.search).get('topic');
+    var topicLabel = topicSlug && TOPIC_LABELS[topicSlug];
+
+    if (topicField && topicLabel) {
+      topicField.value = topicSlug;
+
+      var topicNote = document.getElementById('topic-note');
+      var topicNoteName = document.getElementById('topic-note-name');
+      if (topicNote && topicNoteName) {
+        topicNoteName.textContent = topicLabel;
+        topicNote.hidden = false;
+      }
+
+      var messageField = document.getElementById('message');
+      if (messageField && !messageField.value) {
+        messageField.value = 'I\'m interested in booking: ' + topicLabel + '\n\n';
+      }
+    }
+
     function showNote(el) {
       if (note) note.hidden = true;
       if (errorNote) errorNote.hidden = true;
