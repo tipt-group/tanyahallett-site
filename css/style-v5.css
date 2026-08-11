@@ -535,6 +535,116 @@ section.block { padding-block: 4rem; }
 .card-link-muted:hover { color: var(--ink); }
 
 /* ==========================================================================
+   Keynote accordion
+   ========================================================================== */
+
+.keynote-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.keynote-accordion-item {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--purple);
+  border-radius: var(--radius);
+}
+
+.keynote-accordion-item summary {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  padding: 1.9rem 3rem 1.9rem 1.75rem;
+}
+.keynote-accordion-item summary::-webkit-details-marker,
+.keynote-accordion-item summary::marker { display: none; content: ""; }
+.keynote-accordion-item summary .tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--purple);
+  background: rgba(96, 40, 160, 0.08);
+  padding: 0.25em 0.65em;
+  border-radius: 999px;
+  margin-bottom: 0.9em;
+}
+.keynote-accordion-item summary h3 { margin-bottom: 0.5em; }
+.keynote-accordion-item summary .lede { font-size: 1rem; color: var(--ink-soft); margin-bottom: 0; max-width: 46rem; }
+
+.accordion-icon {
+  position: absolute;
+  top: 1.9rem;
+  right: 1.75rem;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.accordion-icon::before,
+.accordion-icon::after {
+  content: "";
+  position: absolute;
+  background: var(--orange);
+  transition: transform var(--speed) ease;
+}
+.accordion-icon::before { top: 50%; left: 0; width: 100%; height: 2px; transform: translateY(-50%); }
+.accordion-icon::after { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%); }
+.keynote-accordion-item[open] .accordion-icon::after { transform: translateX(-50%) scaleY(0); }
+
+.keynote-accordion-item.card-orange { border-top-color: var(--orange); }
+.keynote-accordion-item.card-orange summary .tag { color: var(--orange); background: rgba(208, 96, 0, 0.09); }
+.keynote-accordion-item.card-pink { border-top-color: var(--pink); }
+.keynote-accordion-item.card-pink summary .tag { color: var(--pink-dark); background: rgba(232, 40, 120, 0.09); }
+.keynote-accordion-item.card-teal { border-top-color: var(--teal); }
+.keynote-accordion-item.card-teal summary .tag { color: var(--teal-dark); background: rgba(0, 168, 192, 0.1); }
+.keynote-accordion-item.card-green { border-top-color: var(--green); }
+.keynote-accordion-item.card-green summary .tag { color: var(--green-dark); background: rgba(124, 138, 14, 0.1); }
+
+.keynote-accordion-body {
+  padding: 0 1.75rem 1.9rem;
+  max-width: 46rem;
+}
+.keynote-accordion-body h4 { margin-top: 1.75rem; margin-bottom: 0.75rem; }
+
+/* ==========================================================================
+   FAQ accordion
+   ========================================================================== */
+
+.faq-item {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.faq-item + .faq-item { margin-top: 1rem; }
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+.faq-item summary::-webkit-details-marker,
+.faq-item summary::marker { display: none; content: ""; }
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--orange);
+  flex-shrink: 0;
+  transition: transform var(--speed) ease;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { margin-top: 0.9rem; margin-bottom: 0; }
+
+/* ==========================================================================
    Testimonials
    ========================================================================== */
 
@@ -846,22 +956,40 @@ section.block { padding-block: 4rem; }
   .audience-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+.sector-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0.75rem;
+}
+.sector-strip li {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.01em;
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+}
+.sector-strip li:nth-child(5n+1) { background: var(--purple); }
+.sector-strip li:nth-child(5n+2) { background: var(--orange); }
+.sector-strip li:nth-child(5n+3) { background: var(--pink); }
+.sector-strip li:nth-child(5n+4) { background: var(--teal); }
+.sector-strip li:nth-child(5n+5) { background: var(--green); }
+@media (max-width: 640px) {
+  .sector-strip { gap: 0.6rem; }
+  .sector-strip li { font-size: 0.88rem; padding: 0.5rem 1.05rem; }
+}
+
 .discover-grid { grid-template-columns: repeat(2, 1fr); }
 @media (max-width: 640px) {
   .discover-grid { grid-template-columns: 1fr; }
 }
 
-.topic-detail {
-  scroll-margin-top: 6rem;
-  max-width: 46rem;
-}
-.topic-detail + .topic-detail {
-  margin-top: 3rem;
-  padding-top: 3rem;
-  border-top: 1px solid var(--border);
-}
-.topic-detail h3 { margin-bottom: 0.3em; }
-.topic-detail h4 { margin-top: 1.75rem; margin-bottom: 0.75rem; }
 .topic-enquire { margin-top: 2rem; }
 
 .topic-availability {
