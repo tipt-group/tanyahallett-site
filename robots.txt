@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /thank-you.html
+Disallow: /downloads/
 
 Sitemap: https://tanyahallett.com/sitemap.xml
