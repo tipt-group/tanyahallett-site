@@ -49,7 +49,7 @@
       settled = true;
       cleanup();
       if (data && data.result === 'success') {
-        window.location.href = 'thank-you.html';
+        window.location.href = 'check-inbox.html';
       } else {
         var msg = (data && data.msg) ? data.msg.replace(/<[^>]*>/g, '') : 'Something went wrong. Please try again.';
         showResponse(errorNote, msg);

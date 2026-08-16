@@ -1242,3 +1242,12 @@ form.contact-form {
 .thankyou-card .tag { margin-bottom: 0.9em; }
 .thankyou-card .btn { margin-top: 0.75rem; }
 .thankyou-back { text-align: center; margin-top: 2rem; }
+
+.insight-library {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.insight-library .btn { margin-top: 0.75rem; }
