@@ -435,6 +435,7 @@ section.block { padding-block: 4rem; }
 
 .section-head { max-width: 46rem; margin-bottom: 2.5rem; }
 .section-head.center { margin-inline: auto; text-align: center; }
+.section-head.center p { margin-inline: auto; }
 .kicker {
   text-transform: uppercase;
   letter-spacing: 0.12em;
