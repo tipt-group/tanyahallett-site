@@ -5,6 +5,7 @@
   var successNote = document.getElementById('mce-success-response');
   var errorNote = document.getElementById('mce-error-response');
   var submitBtn = document.getElementById('mc-embedded-subscribe');
+  var successUrl = form.getAttribute('data-success-url') || 'thank-you.html';
 
   function showResponse(el, message) {
     [successNote, errorNote].forEach(function (n) {
@@ -48,8 +49,9 @@
       if (settled) return;
       settled = true;
       cleanup();
-      if (data && data.result === 'success') {
-        window.location.href = 'thank-you.html';
+      // Existing subscribers get an "already subscribed" error; still let them through.
+      if (data && (data.result === 'success' || /already subscribed/i.test(data.msg || ''))) {
+        window.location.href = successUrl;
       } else {
         var msg = (data && data.msg) ? data.msg.replace(/<[^>]*>/g, '') : 'Something went wrong. Please try again.';
         showResponse(errorNote, msg);
